@@ -4,13 +4,13 @@ const sidemenuData = {
         {
             id: 0,
             title: "Game",
-            isActive: false,
+            isActive: true,
             submenu:[
                 { id: 0, title: "Save", isActive: false },
-                { id: 1, title: "Load", isActive: false },
+                { id: 1, title: "Load", isActive: true },
                 { id: 2, title: "Delete", isActive: false }
             ],
-            expanded: false,
+            expanded: true,
         },
         {
             id: 1,

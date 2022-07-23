@@ -22,9 +22,10 @@ function App() {
             if (menuId==sidemenu.id && submenu.id==submenuId){
               submenu[attr] = true
               sidemenu['expaned'] = true
-              sidemenu[attr] = true
+              // sidemenu[attr] = true
             }else{
               submenu[attr] = false
+              sidemenu[attr] = false
             }
           }
         }

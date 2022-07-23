@@ -22,8 +22,8 @@ export default function Sidebar({sidebarData,toggleSidebarState, setMenuActive})
               <div key={'menuItem_'+m} >
                 <div
                   onClick={ ()=>onClickSidemenu(menuItem.id, null, menuItem?.submenu?.length?'expanded':'isActive', true) }
-                  className='cursor-pointer menu-item'>
-                    <span>{menuItem.title}-{menuItem.expanded?"E":"X"}-{menuItem.isActive?"A":"I"}</span>
+                  className={'cursor-pointer menu-item '+(menuItem.isActive?'active':'')}>
+                    <span>{menuItem.title}</span>
                 </div>
 
                 {
@@ -31,8 +31,8 @@ export default function Sidebar({sidebarData,toggleSidebarState, setMenuActive})
                     <div
                       key={'submenu_'+s}
                       onClick={()=>onClickSidemenu( menuItem.id, subMenu.id, 'isActive' , true )}
-                      className='cursor-pointer menu-item menu-sub-item'>
-                      <span>{subMenu.title}-{ subMenu.isActive?"A":"I" }</span>
+                      className={'cursor-pointer menu-item menu-sub-item '+(subMenu.isActive?'active':'')}>
+                      <span>{subMenu.title}</span>
                     </div>
                   )  ) :""
                 }
