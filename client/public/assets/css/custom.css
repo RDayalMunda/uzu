@@ -1,10 +1,11 @@
 div.burger{
     position: relative;
     border-radius: 8px;
-    background-color: rgba(230, 230, 230, 0.8);
+    background-color: rgba(230, 230, 230, 0.1);
     padding-top: 5px;
     width: 45px;
     height: 35px;
+    margin-left: 5px;
 }
 div.burger .burger-bar{
     border-radius: 5px;
@@ -18,13 +19,13 @@ div.burger .burger-bar{
 
 .sidebar{
     position: absolute;
-    background-color: rgba(255, 217, 4, 0.8);
+    background-color: rgba(255, 217, 4, 0.9);
     left: 0px;
     top: 0px;
     width: 150px;
     height: 100%;
     transition: 500ms;
-    z-index: 3;
+    z-index: 2;
 }
 .sidebar.sidebar-pushed{
     background-color: rgba(255, 217, 4, 0);
@@ -32,6 +33,32 @@ div.burger .burger-bar{
     width: 150px;
     transition: 500ms;
 }
+.sidebar .menubar{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.menubar .menu-item{
+    color: rgb(189, 136, 22);
+    font-size: larger;
+    transition: 400ms;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.menubar .menu-item span{
+    margin-left: 10px;
+}.menubar .menu-item.menu-sub-item span{
+    margin-left: 20px;
+}
+.menubar .menu-item.active{
+    background-color: rgba(255, 248, 210, 0.6)
+}
+.menubar .menu-item:not(.active):hover {
+    background-color: rgb(255, 255, 255, 0.6);
+    color: rgba(124, 108, 14, 0.9);
+    transition: 500ms;
+}.menubar .menu-item.active:hover{
+    background-color: rgba(255, 247, 203, 0.9)
+}
+
 .opposite-sidebar{
     position: absolute;
     background-color: rgba(47, 83, 83, 0.3);

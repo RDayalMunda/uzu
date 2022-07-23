@@ -7,7 +7,7 @@ import Todo_list from "./components/todos/todo-list";
 function App() {
 
   //to toggle sidebar
-  const [isSidebarPulled, setSidebarState] = useState(false)
+  const [isSidebarPulled, setSidebarState] = useState(true)
   const toggleSidebarState = ()=>{ setSidebarState(!isSidebarPulled) }
 
   return (
@@ -19,7 +19,7 @@ function App() {
       <Header
         toggleSidebarState={toggleSidebarState}
       ></Header>
-      <Todo_list />
+      <Todo_list></Todo_list>
     </div>
   );
 }
