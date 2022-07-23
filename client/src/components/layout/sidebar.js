@@ -5,17 +5,27 @@ export default function Sidebar({sidebarData,toggleSidebarState}) {
     <>
     
       {/* <div className={'opposite-sidebar '+(isSidebarPulled?"":"opposite-sidebar-pushed") } ></div> */}
-      <div className={'sidebar '+(sidebarData.isSidebarPulled?"":"sidebar-pushed")}>
+      <div className={'sidebar '+(sidebarData?.isSidebarPulled?"":"sidebar-pushed")}>
         <div onClick={toggleSidebarState} className="burger cursor-pointer" >
           <div className='burger-bar'></div>
           <div className='burger-bar'></div>
           <div className='burger-bar'></div>
         </div>
         <div className='menubar'>
-          <div className='cursor-pointer menu-item active'> <span>Game</span> </div>
-          <div className='cursor-pointer menu-item menu-sub-item'> <span>Save</span> </div>
-          <div className='cursor-pointer menu-item menu-sub-item'> <span>Load</span> </div>
-          <div className='cursor-pointer menu-item menu-sub-item'> <span>Delete</span> </div>
+          {
+            sidebarData?.sidemenu.map((menuItem, m) => { return (
+              <div key={'menuItem_'+m} >
+                <div className='cursor-pointer menu-item'> <span>{menuItem.title}</span> </div>
+
+                {
+                  (menuItem?.submenu?.length && menuItem.isActive )? menuItem.submenu.map( (subMenu, s)=>(
+                    <div key={'submenu_'+s} className='cursor-pointer menu-item menu-sub-item'> <span>{subMenu.title}</span> </div>
+                  )  ) :""
+                }
+              
+              </div>
+            ) } )
+          }
         </div>
       </div>
     </>
