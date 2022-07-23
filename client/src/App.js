@@ -7,13 +7,30 @@ import Todo_list from "./components/todos/todo-list";
 function App() {
 
   //to toggle sidebar
-  const [isSidebarPulled, setSidebarState] = useState(true)
-  const toggleSidebarState = ()=>{ setSidebarState(!isSidebarPulled) }
+  const [sidebarData, setSidebarData] = useState({
+    isSidebarPulled : true,
+    sidemenu:[
+      {
+        title: "Game",
+        isActive: false,
+        submenu:[
+          { title: "Save", isActive: false },
+          { title: "Load", isActive: false },
+          { title: "Delete", isActive: false }
+        ]
+      },
+      {
+        title: "Help",
+        isActive: true,
+      }
+    ] 
+  })
+  const toggleSidebarState = ()=>{ setSidebarData({ ...sidebarData, isSidebarPulled: !sidebarData.isSidebarPulled }) }
 
   return (
     <div>
       <Sidebar
-        isSidebarPulled={isSidebarPulled}
+        sidebarData={sidebarData}
         toggleSidebarState={toggleSidebarState}
       ></Sidebar>
       <Header

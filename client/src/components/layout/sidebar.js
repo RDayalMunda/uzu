@@ -1,11 +1,11 @@
 import React, {useState } from 'react'
 
-export default function Sidebar({isSidebarPulled,toggleSidebarState}) {
+export default function Sidebar({sidebarData,toggleSidebarState}) {
   return (
     <>
     
       {/* <div className={'opposite-sidebar '+(isSidebarPulled?"":"opposite-sidebar-pushed") } ></div> */}
-      <div className={'sidebar '+(isSidebarPulled?"":"sidebar-pushed")}>
+      <div className={'sidebar '+(sidebarData.isSidebarPulled?"":"sidebar-pushed")}>
         <div onClick={toggleSidebarState} className="burger cursor-pointer" >
           <div className='burger-bar'></div>
           <div className='burger-bar'></div>
