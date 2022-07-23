@@ -1,6 +1,11 @@
 import React, {useState } from 'react'
 
-export default function Sidebar({sidebarData,toggleSidebarState}) {
+export default function Sidebar({sidebarData,toggleSidebarState, setMenuActive}) {
+
+  const onClickSidemenu = (menuId, submenuId, attr, inActivateRest)=>{
+    setMenuActive(menuId, submenuId, attr , inActivateRest)
+  }
+
   return (
     <>
     
@@ -15,11 +20,20 @@ export default function Sidebar({sidebarData,toggleSidebarState}) {
           {
             sidebarData?.sidemenu.map((menuItem, m) => { return (
               <div key={'menuItem_'+m} >
-                <div className='cursor-pointer menu-item'> <span>{menuItem.title}</span> </div>
+                <div
+                  onClick={ ()=>onClickSidemenu(menuItem.id, null, menuItem?.submenu?.length?'expanded':'isActive', true) }
+                  className='cursor-pointer menu-item'>
+                    <span>{menuItem.title}-{menuItem.expanded?"E":"X"}-{menuItem.isActive?"A":"I"}</span>
+                </div>
 
                 {
-                  (menuItem?.submenu?.length && menuItem.isActive )? menuItem.submenu.map( (subMenu, s)=>(
-                    <div key={'submenu_'+s} className='cursor-pointer menu-item menu-sub-item'> <span>{subMenu.title}</span> </div>
+                  (menuItem?.submenu?.length && menuItem.expanded )? menuItem.submenu.map( (subMenu, s)=>(
+                    <div
+                      key={'submenu_'+s}
+                      onClick={()=>onClickSidemenu( menuItem.id, subMenu.id, 'isActive' , true )}
+                      className='cursor-pointer menu-item menu-sub-item'>
+                      <span>{subMenu.title}-{ subMenu.isActive?"A":"I" }</span>
+                    </div>
                   )  ) :""
                 }
               
