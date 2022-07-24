@@ -9,6 +9,7 @@ import Todo_list from "./components/todos/todo-list";
 import LoadGame from "./components/game/load/load"
 import SaveGame from "./components/game/save/save"
 import DeleteGame from "./components/game/delete/delete"
+import HelpComponent from "./components/help/help"
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
       sidebarData.sidemenu[menuId][attr] = !sidebarData.sidemenu[menuId][attr]
     }
     if ( attr=='isActive'){
-      sidebarData.activeMenu['menuId'] = submenuId==null?menuId:null
+      sidebarData.activeMenu['menuId'] = menuId
       sidebarData.activeMenu['submenuId'] = submenuId
       sidebarData.activeMenu['isSubmenu'] = submenuId==null?false:true
     }
@@ -39,7 +40,15 @@ function App() {
         toggleSidebarState={toggleSidebarState}
       ></Header>
       {/* Dynamically adding Components According to what compoent is active */}
-      <LoadGame></LoadGame>
+      {
+        // Game menu
+        (sidebarData.activeMenu.menuId==0 && sidebarData.activeMenu.submenuId==0)?<SaveGame></SaveGame>:
+        (sidebarData.activeMenu.menuId==0 && sidebarData.activeMenu.submenuId==1)?<LoadGame></LoadGame>:
+        (sidebarData.activeMenu.menuId==0 && sidebarData.activeMenu.submenuId==2)?<DeleteGame></DeleteGame>:
+        (sidebarData.activeMenu.menuId==1)?<HelpComponent></HelpComponent>:
+        "404 page not found"
+        
+      }
 
     </div>
   );
