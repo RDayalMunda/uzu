@@ -1,5 +1,5 @@
 const sidemenuData = {
-    isSidebarPulled : true,
+    isSidebarPulled : false,
     sidemenu:[
         {
             id: 0,
