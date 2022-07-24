@@ -4,7 +4,7 @@ const sidemenuData = {
         {
             id: 0,
             title: "Game",
-            isActive: true,
+            isActive: false,
             submenu:[
                 { id: 0, title: "Save", isActive: false },
                 { id: 1, title: "Load", isActive: true },
