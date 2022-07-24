@@ -12,7 +12,9 @@ function App() {
   const setMenuActive = (menuId, submenuId, attr,inActivateRest) => {
     for (let sidemenu of sidebarData.sidemenu){
       if (attr=='expanded'){
-        sidemenu[attr] = menuId==sidemenu.id ? !sidemenu[attr] : false
+        if (sidemenu.hasOwnProperty(attr)){
+          sidemenu[attr] = menuId==sidemenu.id ? !sidemenu[attr] : false
+        }
       }else if (attr=='isActive'){
         if (sidemenu.hasOwnProperty(attr)) {
           sidemenu[attr] = sidemenu.id==menuId?true:false
@@ -21,8 +23,7 @@ function App() {
           for (let submenu of sidemenu.submenu){
             if (menuId==sidemenu.id && submenu.id==submenuId){
               submenu[attr] = true
-              sidemenu['expaned'] = true
-              // sidemenu[attr] = true
+              if (sidemenu.hasOwnProperty('expanded')) { sidemenu['expaned'] = true }
             }else{
               submenu[attr] = false
               sidemenu[attr] = false

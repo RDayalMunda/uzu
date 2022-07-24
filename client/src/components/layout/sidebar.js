@@ -23,7 +23,7 @@ export default function Sidebar({sidebarData,toggleSidebarState, setMenuActive})
                 <div
                   onClick={ ()=>onClickSidemenu(menuItem.id, null, menuItem?.submenu?.length?'expanded':'isActive', true) }
                   className={'cursor-pointer menu-item '+(menuItem.isActive?'active':'')}>
-                    <span>{menuItem.title}</span>
+                    <span>{menuItem.title} {menuItem.expanded?"-":menuItem.expanded==false?"+":""}</span>
                 </div>
 
                 {
