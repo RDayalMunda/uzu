@@ -22,14 +22,15 @@ export default function Sidebar({sidebarData,toggleSidebarState, setMenuActive})
               <div key={'menuItem_'+m} >
                 <div
                   onClick={ ()=>onClickSidemenu(menuItem.id, null, menuItem?.submenu?.length?'expanded':'isActive', true) }
-                  className={'cursor-pointer menu-item '+(menuItem.isActive?'active':'')}>
+                  className={'cursor-pointer menu-item '+(menuItem.isActive?'active':'')}
+                  menu_id={menuItem.id}>
                     <span>{menuItem.title} {menuItem.expanded?"-":menuItem.expanded==false?"+":""}</span>
                 </div>
 
                 {
                   (menuItem?.submenu?.length && menuItem.expanded )? menuItem.submenu.map( (subMenu, s)=>(
                     <div
-                      key={'submenu_'+s}
+                      key={'submenu_'+s} menu_id={menuItem.id} submenu_id={subMenu.id}
                       onClick={()=>onClickSidemenu( menuItem.id, subMenu.id, 'isActive' , true )}
                       className={'cursor-pointer menu-item menu-sub-item '+(subMenu.isActive?'active':'')}>
                       <span>{subMenu.title}</span>
